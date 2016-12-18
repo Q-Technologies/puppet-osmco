@@ -1,0 +1,28 @@
+{
+  "name": "qtechnologies/osmco",
+  "version": "1.0.0",
+  "author": "Q-Technologies",
+  "summary": "Puppet module to distribute the MCO tools for non-enterprise platforms",
+  "license": "Apache-2.0",
+  "tags": ["mco","mcollective"],
+  "source": "https://github.com/Q-Technologies/puppet-osmco.git",
+  "project_page": "https://github.com/Q-Technologies/puppet-osmco",
+  "issues_url": "https://github.com/Q-Technologies/puppet-osmco/issues",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"Debian",
+      "operatingsystemrelease": [
+        "8.0"
+      ]
+    },
+    {
+      "operatingsystem": "openSUSE",
+      "operatingsystemrelease": [ 
+        "Leap 42.2"
+     ]
+    }
+  ],
+  "data_provider": "hiera"
+}
+

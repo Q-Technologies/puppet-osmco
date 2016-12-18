@@ -1,0 +1,82 @@
+
+# Centrally managed by Puppet version 4.8.1
+# https://docs.puppetlabs.com/mcollective/configure/server.html
+
+# Connector settings (required):
+# -----------------------------
+connector = activemq
+direct_addressing = 1
+
+# ActiveMQ connector settings:
+plugin.activemq.randomize = false
+plugin.activemq.pool.size = 1
+plugin.activemq.pool.1.host = <%= $servername %>
+plugin.activemq.pool.1.port = 61613
+plugin.activemq.pool.1.user = mcollective
+plugin.activemq.pool.1.password = <%= $activemq_passwd %>
+plugin.activemq.pool.1.ssl = true
+plugin.activemq.pool.1.ssl.ca = <%= $pa_config_path %>/ssl/certs/ca.pem
+plugin.activemq.pool.1.ssl.cert = <%= $pa_config_path %>/ssl/certs/<%= $facts[clientcert] %>.pem
+plugin.activemq.pool.1.ssl.key = <%= $pa_config_path %>/ssl/private_keys/<%= $facts[clientcert] %>.pem
+plugin.activemq.heartbeat_interval = 120
+plugin.activemq.max_hbrlck_fails = 0
+
+# Security plugin settings (required):
+# -----------------------------------
+securityprovider           = ssl
+
+# SSL plugin settings:
+plugin.ssl_server_private  = /etc/puppetlabs/mcollective/ssl/mcollective-private.pem
+plugin.ssl_server_public   = /etc/puppetlabs/mcollective/ssl/mcollective-public.pem
+plugin.ssl_client_cert_dir = /etc/puppetlabs/mcollective/ssl/clients
+plugin.ssl_serializer      = yaml
+
+# Facts, identity, and classes (recommended):
+# ------------------------------------------
+factsource = yaml
+plugin.yaml = /etc/puppetlabs/mcollective/facts.yaml
+fact_cache_time = 300
+
+identity = <%= $facts[clientcert] %>
+
+classesfile = /opt/puppetlabs/puppet/cache/state/classes.txt
+
+# Registration (recommended):
+# -----------------------
+registration = Meta
+registerinterval = 600
+
+# Subcollectives (optional):
+# -------------------------
+main_collective = mcollective
+collectives     = mcollective
+
+# Auditing (optional):
+# -------------------
+plugin.rpcaudit.logfile = /var/log/puppetlabs/mcollective-audit.log
+rpcaudit = 1
+rpcauditprovider = logfile
+
+# Authorization (optional):
+# ------------------------
+plugin.actionpolicy.allow_unconfigured = 1
+rpcauthorization = 1
+rpcauthprovider = action_policy
+
+# Logging:
+# -------
+logfile  = /var/log/puppetlabs/mcollective.log
+loglevel = info
+
+# Platform defaults:
+# -----------------
+daemonize = 1
+libdir = <%= $plugins_path %>
+
+# Puppet Agent plugin configuration:
+# ---------------------------------
+plugin.puppet.splay = true
+plugin.puppet.splaylimit = 120
+plugin.puppet.signal_daemon = 0
+plugin.puppet.command = <%= $pa_bin_path %>/puppet agent
+plugin.puppet.config  = <%= $pa_config_path %>/puppet.conf

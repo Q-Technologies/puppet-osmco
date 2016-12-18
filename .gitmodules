@@ -1,0 +1,15 @@
+[submodule "marionette-collective"]
+	path = marionette-collective
+	url = https://github.com/puppetlabs/marionette-collective.git
+[submodule "mcollective-plugins"]
+	path = mcollective-plugins
+	url = https://github.com/puppetlabs/mcollective-plugins.git
+[submodule "mcollective-service-agent"]
+	path = mcollective-service-agent
+	url = https://github.com/puppetlabs/mcollective-service-agent.git
+[submodule "mcollective-package-agent"]
+	path = mcollective-package-agent
+	url = https://github.com/puppetlabs/mcollective-package-agent
+[submodule "mcollective-puppet-agent"]
+	path = mcollective-puppet-agent
+	url = https://github.com/puppetlabs/mcollective-puppet-agent.git
