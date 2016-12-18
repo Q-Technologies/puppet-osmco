@@ -41,6 +41,9 @@ PIDFile=<%= $pid_file_path %>
 WantedBy=multi-user.target
 END
 
+  file { $lib_path
+    ensure  => directory,
+  } ->
   package { 'stomp':
     ensure   => 'installed',
     provider => 'gem',
