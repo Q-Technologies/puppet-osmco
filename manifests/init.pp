@@ -8,7 +8,12 @@ class osmco(
   String $activemq_passwd = "",
 ) {
   $bin_path = "/usr/local/bin"
-  $lib_path = "/usr/lib64/ruby/site_ruby"
+  if $facts[osfamily] == "Debian" {
+    $lib_path = "/usr/local/lib/site_ruby"
+  }
+  else {
+    $lib_path = "/usr/lib64/ruby/site_ruby"
+  }
   $pa_config_path = '/etc/puppetlabs/puppet'
   $mco_config_path = '/etc/puppetlabs/mcollective'
   $mco_config_file_name = "server.cfg"
