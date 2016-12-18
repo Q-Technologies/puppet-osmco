@@ -1,5 +1,5 @@
 # osmco
-Puppet module to distribute the MCO tools for non-enterprise platforms
+Puppet module to distribute the MCO tools for non-enterprise platforms. E.g. openSUSE, Raspbian
 
 ## Instructions
 Call the class from your code, e.g. `class { 'osmco': }`
