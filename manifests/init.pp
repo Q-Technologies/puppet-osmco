@@ -20,8 +20,8 @@ class osmco(
   String $mco_private_key_name,
   String $mco_public_key_name,
   String $peadmin_public_key_name,
-  String $mco_private_key_path    = "${mco_config_path}/${mco_private_key_name}",
-  String $mco_public_key_path     = "${mco_config_path}/${mco_public_key_name}",
+  String $mco_private_key_path    = "${ssl_path}/${mco_private_key_name}",
+  String $mco_public_key_path     = "${ssl_path}/${mco_public_key_name}",
   String $ssl_client_key_path     = "${ssl_path}/clients",
   String $peadmin_public_key_path = "${ssl_client_key_path}/${peadmin_public_key_name}",
 
@@ -90,6 +90,12 @@ END
     ensure                                           => directory,
   } ->
   file { $mco_config_path:
+    ensure                                           => directory,
+  } ->
+  file { $ssl_path:
+    ensure                                           => directory,
+  } ->
+  file { $ssl_client_key_path:
     ensure                                           => directory,
   } ->
   file { $mco_public_key_path:
