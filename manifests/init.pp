@@ -172,7 +172,7 @@ END
   }
 
   # from http://stackoverflow.com/questions/17763569/puppet-controlling-installed-package-version
-  define remove-gem ($version) {
+  define remove_gem ($version) {
     exec { "remove-gem-${name}-version-${version}":
       command => "gem uninstall ${name} -v=${version}",
       unless  => "test `gem list --local | grep -q \"${name}.*${version}\"; echo $?` -ne 0",
@@ -180,7 +180,7 @@ END
     }
   }
 
-  remove-gem {'stomp':
+  remove_gem {'stomp':
     version => '1.4.3',
     notify  => Service['mcollectived'],    
   }
