@@ -12,3 +12,9 @@ osmco::mco_public_key_name: mcollective-public.pem
 osmco::mco_private_key_name: mcollective-private.pem
 osmco::peadmin_public_key_name: peadmin-public.pem
 
+osmco::mco_facter_cron_hour: '*',
+osmco::mco_facter_cron_minute: '*/15'
+osmco::mco_facter_cron_month: '*'
+osmco::mco_facter_cron_monthday: '*'
+osmco::mco_facter_cron_weekday: '*'
+

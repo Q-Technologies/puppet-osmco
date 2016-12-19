@@ -24,7 +24,11 @@ class osmco(
   String $mco_public_key_path     = "${ssl_path}/${mco_public_key_name}",
   String $ssl_client_key_path     = "${ssl_path}/clients",
   String $peadmin_public_key_path = "${ssl_client_key_path}/${peadmin_public_key_name}",
-
+  String $mco_facter_cron_hour,
+  String $mco_facter_cron_minute,
+  String $mco_facter_cron_month,
+  String $mco_facter_cron_monthday,
+  String $mco_facter_cron_weekday,
   # Class parameters are populated from External(hiera)/Defaults/Fail
   String $activemq_passwd         = "",
   String $mco_public_key          = "",
@@ -134,6 +138,7 @@ END
         mco_private_key_path                         => $mco_private_key_path,
         mco_public_key_path                          => $mco_public_key_path,
         ssl_client_key_path                          => $ssl_client_key_path,
+        mco_config_path                              => $mco_config_path,
       } ),
   } ->
   file { '/etc/systemd/system/mcollectived.service':
@@ -153,6 +158,17 @@ END
   service { 'mcollectived':
     ensure                                           => running,
     enable                                           => true,
+  }
+
+
+  cron { 'mcollective-metadata':
+    command  => "PATH=$PATH:/usr/local/bin:/usr/bin facter -y > ${mco_config_path}/facts.yaml 2> ${puppet_enterprise::params::mco_logdir}/mcollective-metadata-cron.log",
+    user     => $puppet_enterprise::params::root_user,
+    hour     => $mco_facter_cron_hour,
+    minute   => $mco_facter_cron_minute,
+    month    => $mco_facter_cron_month,
+    monthday => $mco_facter_cron_monthday,
+    weekday  => $mco_facter_cron_weekday,
   }
 
 }

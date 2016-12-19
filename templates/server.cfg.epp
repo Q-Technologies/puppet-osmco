@@ -34,7 +34,7 @@ plugin.ssl_serializer      = yaml
 # Facts, identity, and classes (recommended):
 # ------------------------------------------
 factsource = yaml
-plugin.yaml = /etc/puppetlabs/mcollective/facts.yaml
+plugin.yaml = <%= $mco_config_path %>/facts.yaml
 fact_cache_time = 300
 
 identity = <%= $facts[clientcert] %>
