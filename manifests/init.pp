@@ -171,6 +171,20 @@ END
     weekday                      => $mco_facter_cron_weekday,
   }
 
+  # from http://stackoverflow.com/questions/17763569/puppet-controlling-installed-package-version
+  define remove-gem ($version) {
+    exec { "remove-gem-${name}-version-${version}":
+      command => "gem uninstall ${name} -v=${version}",
+      unless  => "test `gem list --local | grep -q \"${name}.*${version}\"; echo $?` -ne 0",
+      path    => ['/usr/bin', '/bin'],
+    }
+  }
+
+  remove-gem {'stomp':
+    version => '1.4.3',
+    notify  => Service['mcollectived'],    
+  }
+
 }
 
 
