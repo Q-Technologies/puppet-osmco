@@ -19,11 +19,11 @@ class osmco(
   String $ssl_path                = "${mco_config_path}/ssl",
   String $mco_private_key_name,
   String $mco_public_key_name,
-  #String $peadmin_public_key_name,
+  String $peadmin_public_key_name,
   String $mco_private_key_path    = "${mco_config_path}/${mco_private_key_name}",
   String $mco_public_key_path     = "${mco_config_path}/${mco_public_key_name}",
   String $ssl_client_key_path     = "${ssl_path}/clients",
-  #String $peadmin_public_key_path = "${ssl_client_key_path}/${peadmin_public_key_name}",
+  String $peadmin_public_key_path = "${ssl_client_key_path}/${peadmin_public_key_name}",
 
   # Class parameters are populated from External(hiera)/Defaults/Fail
   String $activemq_passwd         = "",
