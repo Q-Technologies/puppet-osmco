@@ -26,9 +26,9 @@ plugin.activemq.max_hbrlck_fails = 0
 securityprovider           = ssl
 
 # SSL plugin settings:
-plugin.ssl_server_private  = /etc/puppetlabs/mcollective/ssl/mcollective-private.pem
-plugin.ssl_server_public   = /etc/puppetlabs/mcollective/ssl/mcollective-public.pem
-plugin.ssl_client_cert_dir = /etc/puppetlabs/mcollective/ssl/clients
+plugin.ssl_server_private  = <%= $mco_private_key_path %>
+plugin.ssl_server_public   = <%= $mco_public_key_path %>
+plugin.ssl_client_cert_dir = <%= $ssl_client_key_path %>
 plugin.ssl_serializer      = yaml
 
 # Facts, identity, and classes (recommended):
