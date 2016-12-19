@@ -17,7 +17,7 @@ class osmco(
   String $pa_bin_path,
   String $lib_path,
   String $ssl_path                = "${mco_config_path}/ssl",
-  String $mco_public_key_name,
+  String $mco_private_key_name,
   String $mco_public_key_name,
   #String $peadmin_public_key_name,
   String $mco_private_key_path    = "${mco_config_path}/${mco_private_key_name}",

@@ -8,7 +8,7 @@ osmco::mco_config_file_name: server.cfg
 osmco::run_path: /var/run/puppetlabs/
 osmco::plugins_path: /usr/local/
 osmco::pa_bin_path: /usr/local/bin
-osmco::mco_public_key_name: mcollective-private.pem
-osmco::mco_public_key_name: mcollective-private.pem
+osmco::mco_public_key_name: mcollective-public.pem
+osmco::mco_private_key_name: mcollective-private.pem
 osmco::peadmin_public_key_name: peadmin-public.pem
 
