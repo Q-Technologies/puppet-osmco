@@ -162,8 +162,7 @@ END
 
 
   cron { 'mcollective-metadata':
-    command                      => "facter -y > ${mco_config_path}/facts.yaml 2> ${puppet_enterprise::params::mco_logdir}/mcollective-metadata-cron.log",
-    environment                  => "PATH=$PATH:/usr/local/bin:/usr/bin",
+    command                      => "/usr/local/bin/facter -y > ${mco_config_path}/facts.yaml 2> ${puppet_enterprise::params::mco_logdir}/mcollective-metadata-cron.log",
     user                         => $puppet_enterprise::params::root_user,
     hour                         => $mco_facter_cron_hour,
     minute                       => $mco_facter_cron_minute,
