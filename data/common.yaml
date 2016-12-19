@@ -1,6 +1,6 @@
 ---
 osmco::lib_path: /usr/lib64/ruby/site_ruby
-osmco::stomp_version: '3.3.5'
+osmco::stomp_version: '1.3.5'
 osmco::bin_path: /usr/local/bin
 osmco::mco_config_path: /etc/puppetlabs/mcollective
 osmco::pa_config_path: /etc/puppetlabs/puppet
