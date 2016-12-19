@@ -53,25 +53,30 @@ END
     ensure                                           => directory,
   } ->
   package { 'stomp':
+    notify                                           => Service['mcollectived'],    
     ensure                                           => $stomp_version,
     provider                                         => 'gem',
   } ->
   file { "${bin_path}/mco":
+    notify                                           => Service['mcollectived'],    
     ensure                                           => file,
     mode                                             => '0755',
     source                                           => "puppet:///modules/osmco/bin/mco",
   } ->
   file { "${bin_path}/mcollectived":
+    notify                                           => Service['mcollectived'],    
     ensure                                           => file,
     mode                                             => '0755',
     source                                           => "puppet:///modules/osmco/bin/mcollectived",
   } ->
   file { "$lib_path/mcollective.rb":
+    notify                                           => Service['mcollectived'],    
     ensure                                           => file,
     mode                                             => '0644',
     source                                           => "puppet:///modules/osmco/lib/mcollective.rb",
   } ->
   file { "$lib_path/mcollective":
+    notify                                           => Service['mcollectived'],    
     ensure                                           => directory,
     force                                            => true,
     purge                                            => true,
@@ -99,21 +104,25 @@ END
     ensure                                           => directory,
   } ->
   file { $mco_public_key_path:
+    notify                                           => Service['mcollectived'],    
     ensure                                           => file,
     mode                                             => '0644',
     content                                          => $mco_public_key,
   } ->
   file { $mco_private_key_path:
+    notify                                           => Service['mcollectived'],    
     ensure                                           => file,
     mode                                             => '0644',
     content                                          => $mco_private_key,
   } ->
   file { $peadmin_public_key_path:
+    notify                                           => Service['mcollectived'],    
     ensure                                           => file,
     mode                                             => '0644',
     content                                          => $peadmin_public_key,
   } ->
   file { $mco_config_file_path:
+    notify                                           => Service['mcollectived'],    
     ensure                                           => file,
     mode                                             => '0644',
     content                                          => epp("osmco/${mco_config_file_name}.epp",
