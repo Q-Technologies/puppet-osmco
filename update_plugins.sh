@@ -1,7 +1,7 @@
 #!/bin/bash
 
 subdirs="agent  aggregate  application  data registration  security  util  validator"
-plugins="mcollective-service-agent mcollective-puppet-agent mcollective-package-agent"
+plugins="mcollective-service-agent mcollective-puppet-agent mcollective-package-agent mcollective-actionpolicy-auth"
 
 mkdir -p files/plugins
 for plugin_dir in $plugins

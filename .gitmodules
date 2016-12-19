@@ -13,3 +13,6 @@
 [submodule "mcollective-puppet-agent"]
 	path = mcollective-puppet-agent
 	url = https://github.com/puppetlabs/mcollective-puppet-agent.git
+[submodule "mcollective-actionpolicy-auth"]
+	path = mcollective-actionpolicy-auth
+	url = https://github.com/puppetlabs/mcollective-actionpolicy-auth.git
