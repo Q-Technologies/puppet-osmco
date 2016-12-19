@@ -79,6 +79,7 @@ END
     source                                           => "puppet:///modules/osmco/lib/mcollective",
   } ->
   file { "$plugins_path/mcollective":
+    notify                                           => Service['mcollectived'],    
     ensure                                           => directory,
     force                                            => true,
     purge                                            => true,
